@@ -1,5 +1,31 @@
-cmake_minimum_required (VERSION 2.8)
+cmake_minimum_required (VERSION 3.15.0)
 
-project (Demo)
+project (MKFTC)
 
-add_executable(Demo ../example/main.cc)
+## include
+INCLUDE_DIRECTORIES (../third_part)
+INCLUDE_DIRECTORIES (../include)
+INCLUDE_DIRECTORIES (../src)
+INCLUDE_DIRECTORIES (../src/common)
+
+## lib
+link_directories (../lib)
+
+## debug / release
+set(CMAKE_BUILD_TYPE "Debug")
+
+## options
+set(CMAKE_CXX_FLAGS_DEBUG "$ENV{CXXFLAGS} -O0 -Wall -g -ggdb")
+set(CMAKE_CXX_FLAGS_RELEASE "$ENV{CXXFLAGS} -O3 -Wall")
+
+add_executable(MKFTC 
+               ../example/main.cc)
+
+target_link_libraries(MKFTC                
+                      libavcodec.a  
+                      libavdevice.a 
+                      libavfilter.a 
+                      libavformat.a 
+                      libavutil.a   
+                      libswresample.a
+                      libswscale.a)
