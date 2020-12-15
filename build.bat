@@ -17,13 +17,21 @@
 @REM git clone https://github.com/VioletDream-SXZ/FFmpeg.git ./download/FFmpeg/
 @REM git checkout release/4.3
 
-cd ./download/FFmpeg
+@REM cd ./download/FFmpeg
 
-chmod +x .\configure
-chmod +x .\ffbuild\
+@REM chmod +x .\configure
+@REM chmod +x .\ffbuild\
 
-./configure
-make -j4
+@REM ./configure
+@REM make -j4
+@REM make install
+
+@REM cd ../../
+
+git clone https://github.com/VioletDream-SXZ/jsoncpp.git ./download/jsoncpp/
+cd .\download\jsoncpp
+mkdir -p .\build\debug
+cd .\build\debug
+cmake -DCMAKE_BUILD_TYPE=debug -DBUILD_STATIC_LIBS=ON -DBUILD_SHARED_LIBS=OFF -DARCHIVE_INSTALL_DIR=. -G "Unix Makefiles" ../..
+make j2
 make install
-
-cd ../../
