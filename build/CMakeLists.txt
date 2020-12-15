@@ -9,7 +9,7 @@ INCLUDE_DIRECTORIES (../src)
 INCLUDE_DIRECTORIES (../src/common)
 
 ## lib
-link_directories (../lib)
+link_directories (../libs)
 
 ## debug / release
 set(CMAKE_BUILD_TYPE "Debug")
@@ -22,10 +22,4 @@ add_executable(MKFTC
                ../example/main.cc)
 
 target_link_libraries(MKFTC                
-                      libavcodec.a  
-                      libavdevice.a 
-                      libavfilter.a 
-                      libavformat.a 
-                      libavutil.a   
-                      libswresample.a
-                      libswscale.a)
+                      libglog.a)
